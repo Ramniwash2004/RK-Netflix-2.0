@@ -16,7 +16,7 @@ const SearchMovie = () => {
         e.preventDefault();
         dispatch(setLoading(true));
         try {
-            const res = await axios.get(`${SEARCH_MOVIE_URL}${searchMovie}&include_adult=false&language=en-US&page=1`, options);
+            const res = await axios.get(`${SEARCH_MOVIE_URL}${searchMovie}&include_adult=false&language=en-US&page=1`, options); //url ki form me get kr rha h
             const movies = res?.data?.results;
             dispatch(setSearchMovieDetails({ searchMovie, movies }));
         } catch (error) {
@@ -33,7 +33,7 @@ const SearchMovie = () => {
                 <form onSubmit={submitHandler} className='w-[50%]'>
                     <div className='flex justify-between shadow-md border-2 p-2 border-gray-200 rounded-lg w-[100%]'>
                         <input value={searchMovie} onChange={(e) => { setSearchMovie(e.target.value) }} className='w-full outline-none rounded-md text-lg' type="text" placeholder='Search Movies...' />
-                        <button className='bg-red-800 text-white rounded-md px-4 py-2'>{isLoading ? "loading..." : "Search"}</button>
+                        <button className='bg-[#FF7A30] text-white rounded-md px-4 py-2'>{isLoading ? "loading..." : "Search"}</button>
                     </div>
                 </form>
 
