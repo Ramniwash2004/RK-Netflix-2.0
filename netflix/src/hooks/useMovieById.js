@@ -5,10 +5,11 @@ import { getTrailerMovie } from '../redux/movieSlice';
 import { useEffect } from "react";
 
 
-const useMovieById = async (movieId) => {
+const useMovieById =  (movieId) => {
   const dispatch = useDispatch();
   
   useEffect(() => {
+    if(!movieId) return;
     const getMovieById = async () => {
       try {
         const res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos`, options);
@@ -23,7 +24,7 @@ const useMovieById = async (movieId) => {
       }
     }
     getMovieById();
-  },[])
+  },[movieId,dispatch]);
 
 }
 
